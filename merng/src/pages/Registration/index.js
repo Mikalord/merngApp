@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Signup from "./../../components/Signup";
+import Signup from "./../../components/Singup/index";
 import "./styles.scss";
 
 const Registration = (props) => {

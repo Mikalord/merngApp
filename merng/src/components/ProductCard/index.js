@@ -13,7 +13,6 @@ const mapState = (state) => ({
   product: state.productsData.product,
 });
 
-// eslint-disable-next-line no-empty-pattern
 const ProductCard = ({}) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,7 +27,7 @@ const ProductCard = ({}) => {
     return () => {
       dispatch(setProduct({}));
     };
-  }, [dispatch, productID]);
+  }, []);
 
   const handleAddToCart = (product) => {
     if (!product) return;
@@ -43,7 +42,7 @@ const ProductCard = ({}) => {
   return (
     <div className="productCard">
       <div className="hero">
-        <img src={productThumbnail} alt={"alt"}/>
+        <img src={productThumbnail} />
       </div>
       <div className="productDetails">
         <ul>

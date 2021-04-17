@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {
   emailSignInStart,
-  googleSignInStart,
+  signInWithGoogle,
+  resetAllAuthForms,
 } from "./../../redux/User/user.actions";
 
 import "./styles.scss";
@@ -17,18 +18,17 @@ const mapState = ({ user }) => ({
 });
 
 const SignIn = (props) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const { currentUser } = useSelector(mapState);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (currentUser) {
       resetForm();
-      history.push("/");
+      props.history.push("/");
     }
-  }, [currentUser, history]);
+  }, [currentUser]);
 
   const resetForm = () => {
     setEmail("");
@@ -41,7 +41,7 @@ const SignIn = (props) => {
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInStart());
+    dispatch(signInWithGoogle());
   };
 
   const configAuthWrapper = {
@@ -77,8 +77,6 @@ const SignIn = (props) => {
           </div>
 
           <div className="links">
-            <Link to="/registration">Register</Link>
-            {` | `}
             <Link to="/recovery">Reset Password</Link>
           </div>
         </form>
@@ -87,4 +85,4 @@ const SignIn = (props) => {
   );
 };
 
-export default SignIn;
+export default withRouter(SignIn);

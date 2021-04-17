@@ -11,7 +11,6 @@ const mapState = ({ productsData }) => ({
   products: productsData.products,
 });
 
-// eslint-disable-next-line no-empty-pattern
 const ProductResults = ({}) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +21,7 @@ const ProductResults = ({}) => {
 
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
-  }, [dispatch, filterType]);
+  }, [filterType]);
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;

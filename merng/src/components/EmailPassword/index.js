@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import {
-  resetPasswordStart,
-  resetUserState,
+  resetPassword,
+  resetAllAuthForms,
 } from "./../../redux/User/user.actions";
 import "./styles.scss";
 
@@ -13,32 +13,31 @@ import Button from "./../forms/Button";
 
 const mapState = ({ user }) => ({
   resetPasswordSuccess: user.resetPasswordSuccess,
-  userErr: user.userErr,
+  resetPasswordError: user.resetPasswordError,
 });
 
 const EmailPassword = (props) => {
+  const { resetPasswordSuccess, resetPasswordError } = useSelector(mapState);
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { resetPasswordSuccess, userErr } = useSelector(mapState);
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     if (resetPasswordSuccess) {
-      dispatch(resetUserState());
-      history.push("/login");
+      dispatch(resetAllAuthForms());
+      props.history.push("/login");
     }
-  }, [dispatch, history, resetPasswordSuccess]);
+  }, [resetPasswordSuccess]);
 
   useEffect(() => {
-    if (Array.isArray(userErr) && userErr.length > 0) {
-      setErrors(userErr);
+    if (Array.isArray(resetPasswordError) && resetPasswordError.length > 0) {
+      setErrors(resetPasswordError);
     }
-  }, [userErr]);
+  }, [resetPasswordError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(resetPasswordStart({ email }));
+    dispatch(resetPassword({ email }));
   };
 
   const configAuthWrapper = {
@@ -67,15 +66,9 @@ const EmailPassword = (props) => {
 
           <Button type="submit">Email Password</Button>
         </form>
-
-        <div className="links">
-          <Link to="/login">LogIn</Link>
-          {` | `}
-          <Link to="/registration">Register</Link>
-        </div>
       </div>
     </AuthWrapper>
   );
 };
 
-export default EmailPassword;
+export default withRouter(EmailPassword);

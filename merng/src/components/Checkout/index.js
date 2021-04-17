@@ -15,7 +15,6 @@ const mapState = createStructuredSelector({
   total: selectCartTotal,
 });
 
-// eslint-disable-next-line no-empty-pattern
 const Checkout = ({}) => {
   const history = useHistory();
   const { cartItems, total } = useSelector(mapState);

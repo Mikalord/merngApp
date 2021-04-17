@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { signUpUserStart } from "./../../redux/User/user.actions";
 import "./styles.scss";
 
@@ -14,9 +14,8 @@ const mapState = ({ user }) => ({
 });
 
 const Signup = (props) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const { currentUser, userErr } = useSelector(mapState);
+  const dispatch = useDispatch();
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,9 +25,9 @@ const Signup = (props) => {
   useEffect(() => {
     if (currentUser) {
       reset();
-      history.push("/");
+      props.history.push("/");
     }
-  }, [currentUser, history]);
+  }, [currentUser]);
 
   useEffect(() => {
     if (Array.isArray(userErr) && userErr.length > 0) {
@@ -106,15 +105,9 @@ const Signup = (props) => {
 
           <Button type="submit">Register</Button>
         </form>
-
-        <div className="links">
-          <Link to="/login">LogIn</Link>
-          {` | `}
-          <Link to="/recovery">Reset Password</Link>
-        </div>
       </div>
     </AuthWrapper>
   );
 };
 
-export default Signup;
+export default withRouter(Signup);
