@@ -1,1 +1,31 @@
-An Ecommerce Shop built with React FireBase Redux and GraphQl
+An Ecommerce Shop built with React Firebase Redux
+
+npm install -y
+
+"@material-ui/core": "^4.11.3",
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.13.2",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "ckeditor4-react": "^1.4.0",
+    "dispatch": "^1.0.2",
+    "firebase": "^8.4.1",
+    "history": "^5.0.0",
+    "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.2",
+    "react-country-region-selector": "^3.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "web-vitals": "^1.1.1"
