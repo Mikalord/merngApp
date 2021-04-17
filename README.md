@@ -1,9 +1,10 @@
-An Ecommerce Shop built with React
+#An Ecommerce Shop built with React
 
-npm install -y
+"npm install"
 
-Tech Stack
-React.js
-Node.js
-Firebase
-Stripe
+#Tech Stack
+
+-React.js
+-Node.js
+-Firebase
+-Stripe
