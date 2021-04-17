@@ -35,7 +35,7 @@ export function* saveOrder({ payload }) {
     });
     yield put(clearCart());
   } catch (err) {
-    // console.log(err);
+    console.log(err);
   }
 }
 

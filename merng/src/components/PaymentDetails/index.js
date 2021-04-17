@@ -10,7 +10,6 @@ import {
   selectCartItems,
 } from "./../../redux/Cart/cart.selectors";
 import { saveOrderHistory } from "./../../redux/Orders/orders.actions";
-import { clearCart } from "./../../redux/Cart/cart.actions";
 import { createStructuredSelector } from "reselect";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
